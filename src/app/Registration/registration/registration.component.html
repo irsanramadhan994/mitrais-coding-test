@@ -1,0 +1,91 @@
+<div id="overlay">
+    
+</div>
+<mat-card class="example-card" [formGroup]="FormRegistration">
+  <mat-card-header>
+    <mat-card-title>Registration</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="label-error" *ngIf="mobileError && login && !FormControl.mobileNumber.invalid  "> 
+      Please Insert Valid Indonesian Number
+    </div>
+    <div class="label-error" *ngIf="FormControl.mobileNumber.invalid  && login"> 
+        Please Insert Mobile Number
+      </div>
+    <div class="example-container" >
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Mobile Number"     formControlName="mobileNumber">
+            </mat-form-field>
+      </div>
+  
+  </mat-card-content>
+  <div class="label-error" *ngIf="FormControl.firstName.invalid  && login"> 
+    Please Enter First Name
+  </div>
+
+  <div class="example-container" >
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="First Name"     formControlName="firstName">
+    </mat-form-field>
+  </div>
+
+
+  <div class="label-error" *ngIf="FormControl.lastName.invalid  && login"> 
+    Please Enter Last Name
+  </div>
+
+  <div class="example-container" >
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Last Name"     formControlName="lastName">
+    </mat-form-field>
+  </div>
+
+
+  <div class="example-container">
+      <p>Date of Birth</p>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1"  formControlName="dateBirth" > 
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+  </div>
+
+
+  <div class="example-container" style="margin: 10px;">
+    <mat-radio-group aria-label="Select an option"  formControlName="gender">
+        <mat-radio-button value="1" style="margin-right:5px;">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+  </div>
+
+
+  <div class="label-error" *ngIf="FormControl.email.invalid  && login"> 
+    Please Enter Email
+  </div>
+  <div class="example-container" >
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Email"     formControlName="email">
+    </mat-form-field>
+  </div>
+
+
+
+
+    <button mat-raised-button color="primary" class="card-button"
+    (click)="register()"
+    >
+      REGISTRATION
+    </button>
+
+    <mat-card-actions>
+        <button *ngIf="isRegistered"
+          mat-raised-button
+          color="primary"
+          class="card-button"
+          (click)="goToLogin()"
+          style="z-index: 2;"
+        >
+          LOGIN
+        </button>
+  </mat-card-actions>
+</mat-card>
