@@ -13,6 +13,8 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {DemoMaterialModule} from './material.module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { HttpClientModule }    from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,

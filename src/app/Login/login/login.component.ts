@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -14,20 +15,34 @@ export class LoginComponent implements OnInit {
 
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  first_name = new FormControl('', [Validators.required]);
 
   hide = true;
   constructor(
-    public router:Router
+    public router:Router,
+    public http:HttpClient,
   ) { 
 
 
   }
 
   login(){
-    console.log(this.email.value)
-    console.log(this.password.value)
+    let body = {
+      first_name:this.first_name.value,
+      email:this.email.value
+    }
 
+    this.fetch(body).subscribe(
+      res=>{
+        console.log(res)
+      }
+    )
+   
+
+  }
+
+  fetch(body){
+    return this.http.post("http://localhost:3200/api/user/login", body);
   }
 
   goToRegistration(){
@@ -44,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   getErrorPassword() {
 
-    return this.password.hasError('required') ? 'You must enter a value' :
+    return this.first_name.hasError('required') ? 'You must enter a value' :
             '';
   }
 

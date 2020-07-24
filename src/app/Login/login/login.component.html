@@ -14,12 +14,8 @@
     <div class="example-container" >
 
         <mat-form-field appearance="outline">
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"  [formControl]="email" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-
-            </button>
-            <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
+            <input matInput placeholder="Enter your password"  [formControl]="first_name" required>
+            <mat-error *ngIf="first_name.invalid">{{getErrorPassword()}}</mat-error>
 
           </mat-form-field>
     </div>
@@ -33,7 +29,7 @@
 
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" class="card-button" (click)="tes()">LOGIN</button>
+    <button mat-raised-button color="primary" class="card-button" (click)="login()" >LOGIN</button>
     <button mat-raised-button color="primary" class="card-button" (click)="goToRegistration()" >REGISTRATION</button>
 
   </mat-card-actions>
